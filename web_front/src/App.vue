@@ -5,7 +5,7 @@
     <router-link to="/canvas">Canvas</router-link>
     <button
       id="share_facebook"
-      class="button-facebook"
+      class="button button-facebook"
     ></button>
   </div>
   <router-view />
@@ -54,7 +54,7 @@ body {
   width: 47px;
 }
 
-button {
+.button {
   position: absolute;
   right: 32px;
   top: 22px;
@@ -92,7 +92,7 @@ button {
   background-position: 0 -168px;
 }
 
-button:active {
+.button:active {
   background-position: -52px -168px;
 }
 </style>
