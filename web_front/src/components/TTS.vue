@@ -41,7 +41,8 @@ import { Options, Vue } from "vue-class-component";
       let speakOption = {
         rate: 1,
         pitch: 1.2,
-        lang: this.$refs.selectLang.options[this.$refs.selectLang.selectedIndex].value,
+        lang: this.$refs.selectLang.options[this.$refs.selectLang.selectedIndex]
+          .value,
       };
       this.speak(text, speakOption);
     },
