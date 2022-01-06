@@ -3,8 +3,7 @@
     <div id="splashview-hero">
       <div class="banner-usage" />
     </div>
-    <HelloWorld />
-    <!-- <HelloWorld msg="Welcome to My Vue.js + TypeScript App" /> -->
+    <HelloWorld msg="Welcome to My Vue.js + TypeScript App" />
     <TTS />
   </div>
 </template>
@@ -38,7 +37,7 @@ export default class Home extends Vue {}
 #home #splashview-hero {
   width: 90%;
   max-width: 1000px;
-  max-height: 800px;
+  max-height: 700px;
   min-height: 70px;
   margin-top: 10px;
   margin-left: 10px;
