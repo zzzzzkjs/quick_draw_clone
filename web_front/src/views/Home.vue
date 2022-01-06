@@ -34,10 +34,37 @@ export default class Home extends Vue {}
   // justify-content: space-around;
 }
 
+@media screen and (max-height: 300px) {
+  #home #splashview-hero {
+    width: 90%;
+    max-width: 1000px;
+    max-height: 300px;
+    min-height: 70px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-grow: 20;
+    background-position: center;
+    background-size: contain;
+    // background-image: url(../assets/sprite.svg#hero-usage);
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .banner-usage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../assets/sprite.svg#banner-usage);
+  }
+}
+
 #home #splashview-hero {
   width: 90%;
   max-width: 1000px;
-  max-height: 700px;
+  max-height: 800px;
   min-height: 70px;
   margin-top: 10px;
   margin-left: 10px;

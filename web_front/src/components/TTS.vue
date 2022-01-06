@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="tts">
     <select id="select-lang" ref="selectLang">
       <option value="ko-KR">한국어</option>
       <option value="ja-JP" selected>일본어</option>
