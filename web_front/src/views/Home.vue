@@ -3,7 +3,8 @@
     <div id="splashview-hero">
       <div class="banner-usage" />
     </div>
-    <HelloWorld msg="Welcome to My Vue.js + TypeScript App" />
+    <HelloWorld />
+    <!-- <HelloWorld msg="Welcome to My Vue.js + TypeScript App" /> -->
     <TTS />
   </div>
 </template>
