@@ -38,13 +38,13 @@ import { Options, Vue } from "vue-class-component";
       console.log("2");
       this.drawing = false;
     },
-    mousemove(e) {
+    mousemove(e: any) {
       if (this.drawing) {
         console.log("3");
         this.draw(e);
       }
     },
-    draw(e) {
+    draw(e: any) {
       const canvas = this.$refs.canvas;
       const ctx = canvas.getContext("2d");
 
