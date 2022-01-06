@@ -1,7 +1,7 @@
 <template>
   <div id="home">
-    <div id="splashview-hero">
-      <div class="banner-usage" />
+    <div id="splashview-hero" class="small">
+      <div class="banner-usage small2" />
     </div>
     <HelloWorld msg="Welcome to My Vue.js + TypeScript App" />
     <TTS />
@@ -34,33 +34,6 @@ export default class Home extends Vue {}
   // justify-content: space-around;
 }
 
-@media screen and (max-height: 300px) {
-  #home #splashview-hero {
-    width: 90%;
-    max-width: 1000px;
-    max-height: 300px;
-    min-height: 70px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    flex-grow: 20;
-    background-position: center;
-    background-size: contain;
-    // background-image: url(../assets/sprite.svg#hero-usage);
-    background-repeat: no-repeat;
-    position: relative;
-  }
-  .banner-usage {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url(../assets/sprite.svg#banner-usage);
-  }
-}
-
 #home #splashview-hero {
   width: 90%;
   max-width: 1000px;
@@ -72,7 +45,7 @@ export default class Home extends Vue {}
   flex-grow: 20;
   background-position: center;
   background-size: contain;
-  background-image: url(../assets/sprite.svg#hero-usage);
+  // background-image: url(../assets/sprite.svg#hero-usage);
   background-repeat: no-repeat;
   position: relative;
 }
@@ -86,4 +59,33 @@ export default class Home extends Vue {}
   background-repeat: no-repeat;
   background-image: url(../assets/sprite.svg#banner-usage);
 }
+
+@media screen and (min-height: 700px) {
+  .small {
+    width: 90%;
+    max-width: 1000px;
+    max-height: 300px;
+    min-height: 70px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-grow: 20;
+    background-position: center;
+    background-size: contain;
+    background-image: url(../assets/sprite.svg#hero-usage);
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .small2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../assets/sprite.svg#banner-usage);
+  }
+}
+
 </style>
