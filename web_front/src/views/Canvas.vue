@@ -68,6 +68,7 @@ import { Options, Vue } from "vue-class-component";
       this.drawing = false;
     },
     mousemove(e: MouseEvent) {
+      // 핸드폰 터치 이벤트 추가할것
       this.x = e.offsetX;
       this.y = e.offsetY;
       if (this.drawing) {
