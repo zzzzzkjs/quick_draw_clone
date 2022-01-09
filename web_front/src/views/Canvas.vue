@@ -1,23 +1,25 @@
 <template>
-  <!-- <div class="canvas"> -->
-  <canvas
-    id="drawingCanvas"
-    resize="true"
-    width="1278"
-    height="1279"
-    style="
-      -webkit-user-drag: none;
-      user-select: none;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      width: 1278px;
-      height: 1279px;
-    "
-    @mousedown="mousedown()"
-    @mouseup="mouseup()"
-    @mousemove="mousemove($event)"
-    ref="canvas"
-  ></canvas>
-  <!-- </div> -->
+  <div class="canvas_view">
+    <div class="color_palette">
+      <button @click="clear()">지우기</button>
+    </div>
+    <canvas
+      resize="true"
+      width="1278"
+      height="1279"
+      style="
+        -webkit-user-drag: none;
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        width: 1278x;
+        height: 1279px;
+      "
+      @mousedown="mousedown($event)"
+      @mouseup="mouseup()"
+      @mousemove="mousemove($event)"
+      ref="canvas"
+    ></canvas>
+  </div>
 </template>
 
 <script lang="ts">
@@ -27,46 +29,76 @@ import { Options, Vue } from "vue-class-component";
   data() {
     return {
       drawing: false,
+      canvas: null,
+      ctx: null,
+      x: 0,
+      y: 0,
+      lineWidth: 10,
+      lineCap: "round",
+      strokeStyle: "black",
     };
   },
+  mounted() {
+    this.canvas = this.$refs.canvas;
+    this.ctx = this.canvas.getContext("2d");
+
+    this.ctx.lineWidth = 10;
+    this.ctx.lineCap = "round";
+    this.ctx.strokeStyle = "black";
+  },
   methods: {
-    mousedown() {
-      console.log("1");
+    canvasScaleUp() {
+      // var scaleX = window.innerWidth / canvas.width;
+      // var scaleY = window.innerHeight / canvas.height;
+      // var scaleToFit = Math.min(scaleX, scaleY);
+      // var scaleToCover = Math.max(scaleX, scaleY);
+      // stage.style.transformOrigin = '0 0'; //scale from top left
+      // stage.style.transform = 'scale(' + scaleToFit + ')';
+    },
+    mousedown(e: MouseEvent) {
+      const startX = e.offsetX;
+      const startY = e.offsetY;
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(startX, startY);
+
       this.drawing = true;
     },
     mouseup() {
-      console.log("2");
       this.drawing = false;
     },
-    mousemove(e: any) {
+    mousemove(e: MouseEvent) {
+      this.x = e.offsetX;
+      this.y = e.offsetY;
       if (this.drawing) {
-        console.log("3");
-        this.draw(e);
+        this.draw(this.x, this.y);
       }
     },
-    draw(e: any) {
-      const canvas = this.$refs.canvas;
-      const ctx = canvas.getContext("2d");
-
-      const x = e.offsetX;
-      const y = e.offsetY;
-
-      ctx.lineWidth = 10;
-      ctx.lineCap = "round";
-      ctx.strokeStyle = "black";
-
-      if (!this.drawing) return;
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x, y);
-      ctx.stroke();
+    clear() {
+      const width = this.$refs.canvas.width;
+      const height = this.$refs.canvas.height;
+      this.ctx.clearRect(0, 0, width, height);
+      this.drawing = false;
+    },
+    // mouseout() {
+    // this.drawing = false;
+    // },
+    draw(x: number, y: number) {
+      this.ctx.lineTo(x, y);
+      this.ctx.stroke();
     },
   },
 })
 export default class HelloWorld extends Vue {}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.color_palette {
+  margin: 0 auto;
+  width: 50vw;
+  height: 3vh;
+}
+
 canvas {
   border: 1px solid black;
 }
