@@ -14,7 +14,7 @@ https://stackoverflow.com/questions/64867504/vue-3-the-template-root-requires-ex
 
 
 
-# ===========================================================================
+# =====================================
 
 # flask_file_upload
 flask 파일업로드 서버(vue.js 연동예정)
