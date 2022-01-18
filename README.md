@@ -25,6 +25,9 @@ backend 구조는 아래 flask-restx의 보일러플레이트 소스 참고
 
 #### FLASK RESTX BOILER-PLATE WITH JWT
 
+# 파이썬 3.3버전부터 venv모듈 내장되서 별도 패키지 설치 없이 venv사용 가능
+python -m venv .venv
+
 ### Terminal commands
 Note: make sure you have `pip` and `virtualenv` installed.
 

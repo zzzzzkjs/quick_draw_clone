@@ -17,6 +17,9 @@
       @mousedown="mousedown($event)"
       @mouseup="mouseup()"
       @mousemove="mousemove($event)"
+      @touchstart="touchstart($event)"
+      @touchend="touchend()"
+      @touchmove="touchmove($event)"
       ref="canvas"
     ></canvas>
   </div>
@@ -33,6 +36,8 @@ import { Options, Vue } from "vue-class-component";
       ctx: null,
       x: 0,
       y: 0,
+      touchX: 0,
+      touchY: 0,
       lineWidth: 10,
       lineCap: "round",
       strokeStyle: "black",
@@ -68,18 +73,35 @@ import { Options, Vue } from "vue-class-component";
       this.drawing = false;
     },
     mousemove(e: MouseEvent) {
-      // 핸드폰 터치 이벤트 추가할것
       this.x = e.offsetX;
       this.y = e.offsetY;
       if (this.drawing) {
         this.draw(this.x, this.y);
       }
     },
-    clear() {
-      const width = this.$refs.canvas.width;
-      const height = this.$refs.canvas.height;
-      this.ctx.clearRect(0, 0, width, height);
+    touchstart(e: TouchEvent) {
+      console.log("터치!111");
+      e.preventDefault();
+      const startX = e.changedTouches[0].screenX;
+      const startY = e.changedTouches[0].screenY;
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(startX, startY);
+
+      this.drawing = true;
+    },
+    touchend() {
+      console.log("터치!3333");
       this.drawing = false;
+    },
+    touchmove(e: TouchEvent) {
+      console.log("터치!3222222");
+      e.preventDefault();
+      this.touchX = e.changedTouches[0].screenX;
+      this.touchY = e.changedTouches[0].screenY;
+      if (this.drawing) {
+        this.touchDraw(this.touchX, this.touchY);
+      }
     },
     // mouseout() {
     // this.drawing = false;
@@ -87,6 +109,16 @@ import { Options, Vue } from "vue-class-component";
     draw(x: number, y: number) {
       this.ctx.lineTo(x, y);
       this.ctx.stroke();
+    },
+    touchDraw(touchX: number, touchY: number) {
+      this.ctx.lineTo(touchX, touchY);
+      this.ctx.stroke();
+    },
+    clear() {
+      const width = this.$refs.canvas.width;
+      const height = this.$refs.canvas.height;
+      this.ctx.clearRect(0, 0, width, height);
+      this.drawing = false;
     },
   },
 })
