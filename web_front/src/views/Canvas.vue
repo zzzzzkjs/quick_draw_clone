@@ -3,7 +3,7 @@
     <div class="color_palette">
       <button @click="clear()">지우기</button>
     </div>
-    <canvas
+    <!-- <canvas
       resize="true"
       width="1278"
       height="1279"
@@ -11,8 +11,27 @@
         -webkit-user-drag: none;
         user-select: none;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        width: 1278x;
+        width: 1278px;
         height: 1279px;
+      "
+      @mousedown="mousedown($event)"
+      @mouseup="mouseup()"
+      @mousemove="mousemove($event)"
+      @touchstart="touchstart($event)"
+      @touchend="touchend()"
+      @touchmove="touchmove($event)"
+      ref="canvas"
+    ></canvas> -->
+    <canvas
+      resize="true"
+      width="390"
+      height="844"
+      style="
+        -webkit-user-drag: none;
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        width: 390px;
+        height: 844px;
       "
       @mousedown="mousedown($event)"
       @mouseup="mouseup()"
@@ -80,7 +99,6 @@ import { Options, Vue } from "vue-class-component";
       }
     },
     touchstart(e: TouchEvent) {
-      console.log("터치!111");
       e.preventDefault();
       const startX = e.changedTouches[0].screenX;
       const startY = e.changedTouches[0].screenY;
@@ -91,11 +109,9 @@ import { Options, Vue } from "vue-class-component";
       this.drawing = true;
     },
     touchend() {
-      console.log("터치!3333");
       this.drawing = false;
     },
     touchmove(e: TouchEvent) {
-      console.log("터치!3222222");
       e.preventDefault();
       this.touchX = e.changedTouches[0].screenX;
       this.touchY = e.changedTouches[0].screenY;
