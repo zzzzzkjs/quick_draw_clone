@@ -109,7 +109,7 @@ import { Options, Vue } from "vue-class-component";
       e.preventDefault();
       const startX = e.changedTouches[0].pageX;
       const startY = e.changedTouches[0].pageY - this.canvas.offsetTop;
-      console.log(e.changedTouches[0]);
+      // console.log(e.changedTouches[0]);
       this.ctx.beginPath();
       this.ctx.moveTo(startX, startY);
 

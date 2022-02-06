@@ -12,13 +12,11 @@ vue 3 버전 vetur 에서 인식 못해서 오류날 때 참고<br/>
 https://stackoverflow.com/questions/64867504/vue-3-the-template-root-requires-exactly-one-element-eslint-plugin-vue
 
 ## TODO
-Canvas 모바일 터치 이벤트 추가 해야됨
+~~Canvas 모바일 터치 이벤트 추가 해야됨~~
 
-
-# =====================================
 
 # flask_file_upload
-flask 파일업로드 서버(vue.js 연동예정)
+~~flask 파일업로드 서버(vue.js 연동예정)~~
 
 frontend, backend 동시 구동가능한 환경 만드는게 아주 번거로워서 그냥 분리하기로함
 backend 구조는 아래 flask-restx의 보일러플레이트 소스 참고
