@@ -38,20 +38,46 @@ import { Options, Vue } from "vue-class-component";
       y: 0,
       touchX: 0,
       touchY: 0,
-      lineWidth: 10,
+      lineWidth: 1,
       lineCap: "round",
       strokeStyle: "black",
     };
   },
   mounted() {
     this.canvas = this.$refs.canvas;
+
     this.ctx = this.canvas.getContext("2d");
 
     this.ctx.lineWidth = 10;
     this.ctx.lineCap = "round";
     this.ctx.strokeStyle = "black";
+
+    if (this.isMobile()) {
+      console.log("모바일 기기 설정");
+      this.canvas.width = document.body.clientWidth - this.canvas.offsetLeft;
+      this.canvas.height = document.body.clientHeight - this.canvas.offsetTop;
+      this.canvas.style = `
+        -webkit-user-drag: none;
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        width: ${document.body.clientWidth - this.canvas.offsetLeft}px;
+        height: ${document.body.clientHeight - this.canvas.offsetTop}px;
+      `;
+      this.ctx.lineWidth = 1;
+    }
   },
   methods: {
+    isMobile() {
+      let userAgent = navigator.userAgent;
+      let isMobile = false;
+      if (
+        userAgent.indexOf("iPhone") > -1 ||
+        userAgent.indexOf("Android") > -1
+      ) {
+        isMobile = true;
+      }
+      return isMobile;
+    },
     canvasScaleUp() {
       // var scaleX = window.innerWidth / canvas.width;
       // var scaleY = window.innerHeight / canvas.height;
@@ -81,11 +107,8 @@ import { Options, Vue } from "vue-class-component";
     },
     touchstart(e: TouchEvent) {
       e.preventDefault();
-      // const startX = e.changedTouches[0].screenX;
-      // const startY = e.changedTouches[0].screenY;
       const startX = e.changedTouches[0].pageX;
-      const startY = e.changedTouches[0].pageY;
-      console.log(startX, startY);
+      const startY = e.changedTouches[0].pageY - this.canvas.offsetTop;
       console.log(e.changedTouches[0]);
       this.ctx.beginPath();
       this.ctx.moveTo(startX, startY);
@@ -97,10 +120,8 @@ import { Options, Vue } from "vue-class-component";
     },
     touchmove(e: TouchEvent) {
       e.preventDefault();
-      // this.touchX = e.changedTouches[0].screenX;
-      // this.touchY = e.changedTouches[0].screenY;
       this.touchX = e.changedTouches[0].pageX;
-      this.touchY = e.changedTouches[0].pageY;
+      this.touchY = e.changedTouches[0].pageY - this.canvas.offsetTop;
       if (this.drawing) {
         this.touchDraw(this.touchX, this.touchY);
       }

@@ -3,18 +3,18 @@
     <img alt="Vue logo" src="./assets/logo.png" id="vueLogo" />
     <router-link to="/">Home</router-link> |
     <router-link to="/canvas">Canvas</router-link>
-    <button
-      id="share_facebook"
-      class="button button-facebook"
-    ></button>
+    <button id="share_facebook" class="button button-facebook"></button>
   </div>
   <router-view />
 </template>
 
 <style lang="scss">
 body {
+  position: absolute;
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   display: initial;
   overflow: hidden;
 }
