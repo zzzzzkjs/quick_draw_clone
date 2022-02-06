@@ -63,7 +63,7 @@ import { Options, Vue } from "vue-class-component";
         width: ${document.body.clientWidth - this.canvas.offsetLeft}px;
         height: ${document.body.clientHeight - this.canvas.offsetTop}px;
       `;
-      this.ctx.lineWidth = 1;
+      this.ctx.lineWidth = 5;
     }
   },
   methods: {
